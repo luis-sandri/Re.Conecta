@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re.Conecta</title>
+    <link rel="icon" href="../Imagens/Icon_ReConecta.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card border-dark text-center" style="max-width: 25rem;">
+            <div class="card-header">Cadastro</div>
+            <div class="card-body p-4">
+                <h5 class="card-title">Selecione seu perfil para começar</h5>
+                <div class="form-check text-start my-3">
+                    <input class="form-check-input" type="radio" name="tipoCadastro" id="radioDoador" value="doador"
+                        checked>
+                    <label class="form-check-label" for="radioDoador">Quero ser um Doador</label>
+                </div>
+                <div class="form-check text-start mb-3">
+                    <input class="form-check-input" type="radio" name="tipoCadastro" id="radioTecnico" value="tecnico">
+                    <label class="form-check-label" for="radioTecnico">Quero ser um Técnico Voluntário</label>
+                </div>
+                <div class="form-check text-start mb-4">
+                    <input class="form-check-input" type="radio" name="tipoCadastro" id="radioOng" value="ong">
+                    <label class="form-check-label" for="radioOng">Quero cadastrar minha ONG</label>
+                </div>
+                <button type="button" class="btn btn-primary w-100" id="btnAbrirModal">Prosseguir</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDoador" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form id="form-doador">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cadastro de Doador 🧑‍🤝‍🧑</h5><button type="button" class="btn-close"
+                            data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="doador-alert" class="alert d-none" role="alert"></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="doador-nome" class="form-label">Nome</label>
+                                <input type="text" id="doador-nome" name="nome" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="doador-nasc" class="form-label">Data de Nascimento</label>
+                                <input type="date" id="doador-nasc" name="data_nascimento" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="doador-email" class="form-label">Email</label>
+                            <input type="email" id="doador-email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="doador-senha" class="form-label">Senha</label>
+                            <input type="password" id="doador-senha" name="senha" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="doador-tel" class="form-label">Telefone</label>
+                            <input type="tel" id="doador-tel" name="telefone" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="doador-genero" class="form-label">Gênero</label>
+                            <select id="doador-genero" name="genero" class="form-select">
+                                <option selected disabled value="">Selecione...</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <fieldset class="border p-3 rounded mb-3">
+                            <legend class="form-label fs-6">Endereço</legend>
+                            <div class="mb-3">
+                                <label for="doador-rua" class="form-label">Rua</label>
+                                <input id="doador-rua" type="text" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="doador-bairro" class="form-label">Bairro</label>
+                                    <input id="doador-bairro" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="doador-complemento" class="form-label">Complemento</label>
+                                    <input id="doador-complemento" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="mb-3">
+                            <legend class="form-label fs-6">Documento</legend>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipo_documento" id="radioCpfDoador"
+                                    value="CPF" checked>
+                                <label class="form-check-label" for="radioCpfDoador">CPF</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipo_documento" id="radioCnpjDoador"
+                                    value="CNPJ"><label class="form-check-label" for="radioCnpjDoador">CNPJ</label>
+                            </div>
+                        </fieldset>
+                        <div id="campoCpfDoador" class="mb-3"><label for="doador-cpf" class="form-label">CPF</label>
+                            <input type="text" id="doador-cpf" name="documento_cpf" class="form-control">
+                        </div>
+                        <div id="campoCnpjDoador" class="mb-3 d-none">
+                            <label for="doador-cnpj" class="form-label">CNPJ</label>
+                            <input type="text" id="doador-cnpj" name="documento_cnpj" class="form-control">
+                        </div>
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" name="doador-notifica" id="notificasistema"
+                                value="sistema" checked>
+                            <label class="form-check-label" for="notificaemprestimo">Quero receber notificações do
+                                sistema</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalTecnico" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form id="form-tecnico">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cadastro de Técnico Voluntário 🛠️</h5><button type="button"
+                            class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-7 mb-3">
+                                <label for="tecnico-nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" name="nome" id="tecnico-nome" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="tecnico-cpf" class="form-label">CPF</label>
+                                <input type="text" class="form-control" name="CPF" id="tecnico-cpf" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="tecnico-nasc" class="form-label">Data de Nascimento</label>
+                                <input type="date" class="form-control" name="data_nascimento" id="tecnico-nasc"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Gênero</label>
+                                <select id="tecnico-genero" name="genero" class="form-select">
+                                    <option selected disabled value="">Selecione...</option>
+                                    <option value="feminino">Feminino</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <fieldset class="mb-3">
+                            <legend class="form-label fs-6">Tipo de Email</legend>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoEmailTecnico"
+                                    id="radioEmailPessoal" value="pessoal" checked>
+                                <label class="form-check-label" for="radioEmailPessoal">Pessoal</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="tipoEmailTecnico"
+                                    id="radioEmailInstitucional" value="institucional">
+                                <label class="form-check-label" for="radioEmailInstitucional">Institucional</label>
+                            </div>
+                        </fieldset>
+                        <div id="campoEmailPessoal" class="mb-3">
+                            <label for="tecnico-email-pessoal" class="form-label">Email Pessoal</label>
+                            <input type="email" id="tecnico-email-pessoal" name="email_pessoal" class="form-control">
+                        </div>
+                        <div id="campoEmailInstitucional" class="mb-3 d-none">
+                            <label for="tecnico-email-institucional" class="form-label">Email Institucional</label>
+                            <input type="email" id="tecnico-email-institucional" name="email_institucional"
+                                class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tecnico-senha" class="form-label">Senha</label>
+                            <input type="password" id="tecnico-senha" name="senha" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tecnico-tel" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="tecnico-tel">
+                        </div>
+                        <fieldset class="border p-3 rounded mb-3">
+                            <legend class="form-label fs-6">Endereço</legend>
+                            <div class="mb-3">
+                                <label for="tecnico-rua" class="form-label">Rua</label>
+                                <input id="tecnico-rua" type="text" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="tecnico-bairro" class="form-label">Bairro</label>
+                                    <input id="tecnico-bairro" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tecnico-complemento" class="form-label">Complemento</label>
+                                    <input id="tecnico-complemento" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" name="tecnico-notifica"
+                                id="notificaemprestimo" value="emprestimo" checked>
+                            <label class="form-check-label" for="notificaemprestimo">Notificação de lembretes de
+                                empréstimo</label>
+                        </div>
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" name="tecnico-notifica" id="notificaelixo"
+                                value="elixo" checked>
+                            <label class="form-check-label" for="notificaelixo">Quero receber notificações de
+                                E-lixo</label>
+                        </div>
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" name="tecnico-notifica" id="notificasistema"
+                                value="sistema" checked>
+                            <label class="form-check-label" for="notificaemprestimo">Quero receber notificações do
+                                sistema</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalOng" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form id="form-ong">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cadastro de ONG Parceira 🏢</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-7 mb-3">
+                                <label for="ong-nome" class="form-label">Nome da ONG</label>
+                                <input id="ong-nome" name="nome" type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="ong-cnpj" class="form-label">CNPJ</label>
+                                <input id="ong-cnpj" name="CNPJ" type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7 mb-3">
+                                <label for="ong-email" class="form-label">Email</label>
+                                <input id="ong-email" name="email" type="email" class="form-control" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="ong-tel" class="form-label">Telefone</label>
+                                <input id="ong-tel" name="telefone" type="tel" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ong-senha" class="form-label">Senha</label>
+                                <input type="password" id="ong-senha" name="senha" class="form-control" required>
+                            </div>
+                        </div>
+                        <fieldset class="border p-3 rounded mb-3">
+                            <legend class="form-label fs-6">Endereço</legend>
+                            <div class="mb-3">
+                                <label for="ong-rua" class="form-label">Rua</label>
+                                <input id="ong-rua" name="rua" type="text" class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="ong-bairro" class="form-label">Bairro</label>
+                                    <input id="ong-bairro" name="bairro" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ong-complemento" class="form-label">Complemento</label>
+                                    <input id="ong-complemento" name="complemento" type="text" class="form-control">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" name="ong-notifica" id="notificaelixo"
+                                value="elixo" checked>
+                            <label class="form-check-label" for="notificaelixo">Quero receber notificações de
+                                E-lixo</label>
+                        </div>
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" name="ong-notifica" id="notificasistema"
+                                value="sistema" checked>
+                            <label class="form-check-label" for="notificaemprestimo">Quero receber notificações do
+                                sistema</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script  src="../js/cadastro.js"></script>
+    <script  src="../js/funcoes_cadastro.js"></script>
+</body>
+
+</html>

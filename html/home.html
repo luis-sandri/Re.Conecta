@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <title>Login</title>
+</head>
+
+<body>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../Imagens/Icon_ReConecta.png" alt="Logo" width="40" height="40"
+                    class="d-inline-block align-text-top">Re.Conecta
+            </a>
+            <div class="btn-group dropstart">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item link-primary" href="../usuario/gerenciar_usuario.html">Gerenciar usuários</a></li>
+                    <li><a class="dropdown-item link-primary" href="../doador/gerenciar_doador.html">Gerenciar doador</a></li>
+                    <li><a class="dropdown-item link-primary" href="../tecnico/gerenciar_tecnico.html">Gerenciar tecnico</a></li>
+                    <li><a class="dropdown-item link-primary" href="../endereco/gerenciar_endereco.html">Gerenciar endereço</a></li>
+                    <li><a class="dropdown-item link-primary" href="../ong/gerenciar_ong.html">Gerenciar ong</a></li>
+                </ul>
+            </div>
+    </nav>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/valida_sessao.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            valida_sessao();
+        });
+    </script>
+</body>
+
+</html>

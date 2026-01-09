@@ -1,0 +1,116 @@
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 20px; 
+    background-color: #f0f2f5;
+}
+
+h1, h2 { 
+    color: #333; 
+}
+
+.container { 
+    max-width: 900px; 
+    margin: auto; 
+}
+
+.secao { 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+form { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    margin-bottom: 20px; 
+}
+
+form input, form select, form button { 
+    padding: 10px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+form input, form select {
+    flex-basis: 32%;
+    flex-grow: 1;
+}
+
+form button { 
+    cursor: pointer; 
+    color: white; 
+    border: none; 
+    transition: background-color 0.3s;
+}
+
+form button.save { 
+    background-color: #1d38d4; 
+}
+form button.save:hover {
+    background-color:  #2835a7;
+}
+
+form button#btn-cancelar-edicao-tecnico { 
+    background-color: #6c757d; 
+}
+form button#btn-cancelar-edicao-tecnico:hover {
+    background-color: #5a6268;
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+th, td { 
+    border: 1px solid #ddd; 
+    padding: 10px; 
+    text-align: left;
+    word-break: break-all; 
+}
+
+th { 
+    background-color: #e9ecef; 
+}
+
+.actions button { 
+    margin-right: 5px; 
+    padding: 5px 10px; 
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: white;
+}
+
+.actions .edit-btn { 
+    background-color: #1d38d4; 
+}
+.actions .edit-btn:hover {
+    background-color: #2835a7;
+}
+
+.actions .delete-btn { 
+    background-color: #6c757d; 
+}
+.actions .delete-btn:hover {
+    background-color: #5a6268;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+legend {
+    font-size: 14px;
+    color: #666;
+    padding: 0 10px;
+}
