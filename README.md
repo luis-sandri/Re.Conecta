@@ -37,7 +37,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 * [ Bootstrap]
 
 **Back-end:**
-* [Ex: PHP ]
+* [ PHP ]
 
 **Banco de Dados:**
 * [ MySQL ]
