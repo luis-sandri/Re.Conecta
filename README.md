@@ -2,6 +2,18 @@
 
 > **Conectando lixo eletrônico, aprendizado técnico e impacto social.**
 
+## 🔐 Acesso de Teste (Visitante)
+
+Para testar o sistema com permissões de apenas leitura, utilize:
+- **Site:** 
+- **Email:** visitante@reconecta.com
+- **Senha:** senha123
+- **Role:** VISIT (apenas visualização, sem permissão para criar/alterar/excluir)
+
+**Nota de Segurança:** O arquivo de seed com dados iniciais (`seedData-bcrypt.sql`) não está incluído no repositório público por conter hashes de senhas. Para ambientes de desenvolvimento, crie manualmente o usuário visitante com as credenciais acima.
+
+---
+
 ## 📄 Sobre o Projeto
 
 O **Re.Conecta** é uma plataforma idealizada para resolver dois problemas simultâneos: o descarte incorreto de resíduos eletrônicos (e-waste) e a falta de equipamentos para a prática de estudantes e técnicos iniciantes.
@@ -42,18 +54,6 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 **Banco de Dados:**
 * [ MySQL ]
 * Modelagem focada em rastreabilidade e logística reversa.
-
----
-
-## 🔐 Acesso de Teste (Visitante)
-
-Para testar o sistema com permissões de apenas leitura, utilize:
-
-- **Email:** visitante@reconecta.com
-- **Senha:** senha123
-- **Role:** VISIT (apenas visualização, sem permissão para criar/alterar/excluir)
-
-**Nota de Segurança:** O arquivo de seed com dados iniciais (`seedData-bcrypt.sql`) não está incluído no repositório público por conter hashes de senhas. Para ambientes de desenvolvimento, crie manualmente o usuário visitante com as credenciais acima.
 
 ---
 
