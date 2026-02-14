@@ -10,8 +10,6 @@ Para testar o sistema com permissões de apenas leitura, utilize:
 - **Senha:** senha123
 - **Role:** VISIT (apenas visualização, sem permissão para criar/alterar/excluir)
 
-**Nota de Segurança:** O arquivo de seed com dados iniciais (`seedData-bcrypt.sql`) não está incluído no repositório público por conter hashes de senhas. Para ambientes de desenvolvimento, crie manualmente o usuário visitante com as credenciais acima.
-
 ---
 
 ## 📄 Sobre o Projeto
