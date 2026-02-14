@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     validaSessao();
+
+    // Inicializar validador de CPF
+    adicionarValidacaoCPF('tecnico-CPF');
+
     var url = new URLSearchParams(window.location.search);
     var id = url.get("id");
     buscarDados(id);
@@ -9,7 +13,6 @@ async function buscarDados(id){
     const retorno = await fetch("../php/tecnicoGet.php?id="+id);
     const resposta = await retorno.json();
     if(resposta.status == "ok"){
-        alert("Sucesso! " + resposta.mensagem);
         var reg = resposta.data[0];
         document.getElementById("tecnico-id").value = id;
         document.getElementById("tecnico-CPF").value = reg.CPF;
@@ -34,9 +37,22 @@ document.getElementById('form-tecnico').addEventListener('submit', function(even
 async function alterar_tecnico(){
     var id = document.getElementById("tecnico-id").value;
     var CPF = document.getElementById("tecnico-CPF").value;
-    var tipo_email = document.querySelector('input[name="tipo_email"]:checked').value;
+    var tipo_email_element = document.querySelector('input[name="tipo_email"]:checked');
+
+    if (!tipo_email_element) {
+        alert("ERRO! Por favor, selecione o tipo de email.");
+        return;
+    }
+
+    var tipo_email = tipo_email_element.value;
     var data_nasc = document.getElementById("tecnico-data_nasc").value;
     var genero = document.getElementById("tecnico-genero").value;
+
+    // Validar CPF antes de enviar
+    if (!validarCPF(CPF)) {
+        alert("ERRO! CPF inválido. Por favor, corrija antes de salvar.");
+        return;
+    }
 
     const tecnico_alterado = new FormData();
     tecnico_alterado.append("CPF", CPF);
@@ -56,5 +72,6 @@ async function alterar_tecnico(){
         window.location.href = 'gerenciarTecnico.html';
     }else{
         alert("ERRO! " + resposta.mensagem);
+        console.error("Detalhes do erro:", resposta);
     }
 }
