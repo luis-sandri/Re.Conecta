@@ -1,9 +1,10 @@
 <?php
 // Configuração para o acesso ao MySQL.
-$servidor = "localhost:3306";
-$usuario = "root";
-$senha = "";
-$banco = "ReconectaDB";
+// Usa variáveis de ambiente se disponíveis (para deploy), senão usa valores locais (para desenvolvimento)
+$servidor = getenv('MYSQL_HOST') ?: "localhost:3306";
+$usuario = getenv('MYSQL_USER') ?: "root";
+$senha = getenv('MYSQL_PASSWORD') ?: "";
+$banco = getenv('MYSQL_DATABASE') ?: "ReconectaDB";
 
 $conexao = new mysqli($servidor, $usuario, $senha, $banco);
 
