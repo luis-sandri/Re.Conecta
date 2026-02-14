@@ -31,6 +31,9 @@ document.getElementById("form-ong").addEventListener('submit', function(event){
 async function novo(id){
     var cnpj =  document.getElementById("ong-cnpj").value;
 
+    // Remover formatação do CNPJ antes de enviar (apenas números)
+    cnpj = cnpj.replace(/[^\d]/g, '');
+
     const fd = new FormData();
     fd.append('cnpj', cnpj);
     fd.append('usuario_id', id);

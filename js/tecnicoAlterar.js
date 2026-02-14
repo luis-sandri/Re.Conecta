@@ -69,6 +69,9 @@ async function alterar_tecnico(){
         return;
     }
 
+    // Remover formatação do CPF antes de enviar (apenas números)
+    CPF = CPF.replace(/[^\d]/g, '');
+
     const tecnico_alterado = new FormData();
     tecnico_alterado.append("CPF", CPF);
     tecnico_alterado.append("tipo_email", tipo_email);

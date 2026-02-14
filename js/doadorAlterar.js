@@ -34,6 +34,9 @@ async function alterar_doador(){
     var tipo_documento =  document.getElementById("doador-tipo_documento").value;
     var documento =  document.getElementById("doador-documento").value;
 
+    // Remover formatação do documento antes de enviar (apenas números)
+    documento = documento.replace(/[^\d]/g, '');
+
     const doador_alterado = new FormData();
     doador_alterado.append("data_nasc", data_nasc);
     doador_alterado.append("genero", genero);

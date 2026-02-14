@@ -33,6 +33,9 @@ async function novo(id){
     var tipo_documento =  document.getElementById("doador-tipo_documento").value;
     var documento =  document.getElementById("doador-documento").value;
 
+    // Remover formatação do documento antes de enviar (apenas números)
+    documento = documento.replace(/[^\d]/g, '');
+
     const fd = new FormData();
     fd.append('data_nasc', data_nasc);
     fd.append('genero', genero);

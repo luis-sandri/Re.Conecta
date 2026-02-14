@@ -29,6 +29,9 @@ async function alterar_ong(){
     var id = document.getElementById("ong-id").value;
     var cnpj =  document.getElementById("ong-cnpj").value;
 
+    // Remover formatação do CNPJ antes de enviar (apenas números)
+    cnpj = cnpj.replace(/[^\d]/g, '');
+
     const ong_alterado = new FormData();
     ong_alterado.append("cnpj", cnpj);
     ong_alterado.append("id", id);

@@ -31,6 +31,9 @@ async function novo(id){
     var data_nasc = document.getElementById("tecnico-data_nasc").value;
     var genero = document.getElementById("tecnico-genero").value;
 
+    // Remover formatação do CPF antes de enviar (apenas números)
+    CPF = CPF.replace(/[^\d]/g, '');
+
     const fd = new FormData();
     fd.append('CPF', CPF);
     fd.append('tipo_email', tipo_email);
