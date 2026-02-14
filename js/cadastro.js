@@ -13,7 +13,11 @@ async function cadastrarDoador(){
     novoUsuario.append("telefone", document.getElementById('doador-tel').value);
     novoUsuario.append("role", "Doador");
     
+<<<<<<< HEAD
     const retorno = await fetch("../php/usuarioNovo.php", {
+=======
+    const retorno = await fetch("../php/usuario_novo.php", {
+>>>>>>> de1c70501275f81abb2843f48364b9f7bf566a62
         method: "POST",
         body: novoUsuario
     })
@@ -48,7 +52,11 @@ async function cadastrarTecnico(){
     novoUsuario.append("telefone", document.getElementById('tecnico-tel').value);
     novoUsuario.append("role", "tecnico");
 
+<<<<<<< HEAD
     const retorno = await fetch("../php/usuarioNovo.php", {
+=======
+    const retorno = await fetch("../php/usuario_novo.php", {
+>>>>>>> de1c70501275f81abb2843f48364b9f7bf566a62
         method: "POST",
         body: novoUsuario
     })
@@ -78,7 +86,11 @@ async function cadastrarOng(){
     novoUsuario.append("telefone", document.getElementById('ong-tel').value);
     novoUsuario.append("role", "Ong");
 
+<<<<<<< HEAD
     const retorno = await fetch("../php/usuarioNovo.php", {
+=======
+    const retorno = await fetch("../php/usuario_novo.php", {
+>>>>>>> de1c70501275f81abb2843f48364b9f7bf566a62
         method: "POST",
         body: novoUsuario
     })
@@ -90,4 +102,8 @@ async function cadastrarOng(){
     }else{
         alert("ERRO!" +resposta.mensagem);
     }       
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> de1c70501275f81abb2843f48364b9f7bf566a62
