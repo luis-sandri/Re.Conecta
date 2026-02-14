@@ -5,7 +5,7 @@
 ## 🔐 Acesso de Teste (Visitante)
 
 Para testar o sistema com permissões de apenas leitura, utilize:
-- **Site:** 
+- **Site:** https://reconecta-production.up.railway.app/login/login.html
 - **Email:** visitante@reconecta.com
 - **Senha:** senha123
 - **Role:** VISIT (apenas visualização, sem permissão para criar/alterar/excluir)
