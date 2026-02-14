@@ -28,9 +28,12 @@
     $telefone = $_POST['telefone'];
     $role = $_POST['role'];
 
+    // Hash da senha usando bcrypt (muito mais seguro que MD5)
+    $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
+
     try {
-        $stmt = $conexao->prepare("INSERT INTO usuario(nome,email,senha,telefone,role) VALUES (?,?,MD5(?),?,?)");
-        $stmt->bind_param("sssss", $nome, $email, $senha, $telefone, $role);
+        $stmt = $conexao->prepare("INSERT INTO usuario(nome,email,senha,telefone,role) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("sssss", $nome, $email, $senha_hash, $telefone, $role);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){

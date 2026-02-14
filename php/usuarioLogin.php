@@ -7,37 +7,45 @@
         'data' => [] // efetivamente o retorno
     ];
 
-    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE email = ? AND senha = MD5(?)");
-    $stmt->bind_param("ss", $_POST['email'], $_POST['senha']);
-    $stmt->execute(); // executa a query
-    $resultado = $stmt->get_result(); // pega o resultado
+    // Buscar usuário apenas por email
+    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE email = ?");
+    $stmt->bind_param("s", $_POST['email']);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
-    $tabela = []; // Array para enviar para o Front
     if($resultado->num_rows > 0) {
-        // Criar o laço de repetição para ler o resultado
-        // fetch_assoc transforma os atributos do SQL em dicionários
-        while($linha = $resultado->fetch_assoc()) {
-            $tabela[] = $linha;
+        $usuario = $resultado->fetch_assoc();
+
+        // Verificar senha usando bcrypt
+        if(password_verify($_POST['senha'], $usuario['senha'])) {
+            // Senha correta - login bem-sucedido
+            $tabela = [$usuario];
+
+            $retorno = [
+                'status' => 'ok',
+                'mensagem' => 'Login realizado com sucesso',
+                'data' => $tabela
+            ];
+
+            // Iniciando a sessão
+            session_start();
+            $_SESSION['usuario'] = $tabela;
+        } else {
+            // Senha incorreta
+            $retorno = [
+                'status' => 'not ok',
+                'mensagem' => 'Email ou senha incorretos',
+                'data' => []
+            ];
         }
-
-        $retorno = [
-            'status' => 'ok', // ok ou nok
-            'mensagem' => 'Registros encontrados', // mensagem de sucesso ou erro
-            'data' => $tabela // efetivamente o retorno
-        ];
-
-        // Começando a minha sessão
-        session_start();
-        $_SESSION['usuario'] = $tabela;
-        
-
     } else {
+        // Usuário não encontrado
         $retorno = [
-            'status' => 'not ok', // ok ou nok
-            'mensagem' => 'Nenhum registro encontrado', // mensagem de sucesso ou erro
-            'data' => [] // efetivamente o retorno
+            'status' => 'not ok',
+            'mensagem' => 'Email ou senha incorretos',
+            'data' => []
         ];
-    } // <-- Colchete de fechamento do 'else' que estava faltando
+    }
 
     $stmt->close();
     $conexao->close();
