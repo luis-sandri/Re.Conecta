@@ -63,7 +63,7 @@ export function cadastrarDoadorfake() {
     saveDB(db);
     alert("Doador cadastrado com sucesso!");
     console.log("Banco de dados atualizado:", getDB());
-    window.location.href = '../html/login.html';
+    window.location.href = '../login/login.html';
     return true;
 }
 
@@ -111,7 +111,7 @@ export function cadastrarTecnicofake() {
     saveDB(db);
     alert("Técnico cadastrado com sucesso!");
     console.log("Banco de dados atualizado:", getDB());
-    window.location.href = '../html/login.html';
+    window.location.href = '../login/login.html';
 
     return true;
 }
@@ -152,7 +152,7 @@ export function cadastrarOngfake() {
     saveDB(db);
     alert("Ong cadastrada com sucesso!");
     console.log("Banco de dados atualizado:", getDB());
-    window.location.href = '../html/login.html';
+    window.location.href = '../login/login.html';
 
     return true;
 }

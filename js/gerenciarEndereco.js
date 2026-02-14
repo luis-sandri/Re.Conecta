@@ -15,7 +15,7 @@ async function logoff() {
     const retorno = await fetch("../php/usuarioLogoff.php");
     const resposta = await retorno.json();
     if (resposta.status == "ok") {
-        window.location.href = "../login/";
+        window.location.href = "../login/login.html";
     } else {
         alert("Falha ao efetuar logoff");
     }

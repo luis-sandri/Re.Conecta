@@ -9,10 +9,10 @@
 
     if(isset($_GET['id'])) {
         $id = $_GET['id'];
-        $stmt = $conexao->prepare("SELECT * FROM usuario WHERE id = ?");
+        $stmt = $conexao->prepare("SELECT id, nome, email, telefone, role FROM usuario WHERE id = ?");
         $stmt->bind_param("i", $id);
     }else{
-        $stmt = $conexao->prepare("SELECT * FROM usuario");
+        $stmt = $conexao->prepare("SELECT id, nome, email, telefone, role FROM usuario");
     }
 
     $stmt->execute();
