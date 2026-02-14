@@ -1,6 +1,6 @@
 <?php
     // Verifica se o usuário tem permissão para modificar dados
-    // VISITANTE: apenas leitura
+    // VISIT (visitante): apenas leitura
     // Outros roles: podem criar, alterar e excluir
 
     session_start();
@@ -21,8 +21,8 @@
     $usuario = $_SESSION['usuario'][0];
     $role = strtoupper(trim($usuario['role']));
 
-    // VISITANTE não pode modificar dados
-    if($role === 'VISITANTE') {
+    // VISIT (visitante) não pode modificar dados
+    if($role === 'VISIT') {
         $retorno = [
             'status' => 'not ok',
             'mensagem' => 'Você não tem permissão para realizar esta ação. Visitantes podem apenas visualizar dados.',

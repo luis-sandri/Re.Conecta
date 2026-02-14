@@ -110,7 +110,7 @@ INSERT INTO perfis_ong (id, CNPJ) VALUES
 
 -- ====== VISITANTE (Apenas visualização) ======
 INSERT INTO usuario (nome, email, senha, telefone, role) VALUES
-('Convidado Sistema', 'visitante@reconecta.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '(11) 0000-0000', 'VISITANTE');
+('Convidado Sistema', 'visitante@reconecta.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '(11) 0000-0000', 'VISIT');
 
 
 -- ====== RESUMO ======
