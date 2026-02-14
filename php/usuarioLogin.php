@@ -7,7 +7,7 @@
         'data' => [] // efetivamente o retorno
     ];
 
-    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE email = ? AND senha = ?");
+    $stmt = $conexao->prepare("SELECT * FROM usuario WHERE email = ? AND senha = MD5(?)");
     $stmt->bind_param("ss", $_POST['email'], $_POST['senha']);
     $stmt->execute(); // executa a query
     $resultado = $stmt->get_result(); // pega o resultado
