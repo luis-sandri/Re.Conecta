@@ -27,7 +27,21 @@ async function novo(){
         method: "POST",
         body: fd
     });
-    const resposta = await retorno.json();
+
+    // Debug: ver o que o servidor retornou
+    const textoResposta = await retorno.text();
+    console.log("Resposta do servidor:", textoResposta);
+
+    // Tentar converter para JSON
+    let resposta;
+    try {
+        resposta = JSON.parse(textoResposta);
+    } catch (e) {
+        alert("ERRO! Servidor não retornou JSON válido. Veja o console (F12).");
+        console.error("Erro ao fazer parse:", e);
+        console.error("Resposta recebida:", textoResposta);
+        return;
+    }
     
     if(resposta.status == "ok"){
         let usuarioId = resposta.data.usuario_id;
