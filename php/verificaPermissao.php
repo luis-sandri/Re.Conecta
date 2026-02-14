@@ -1,7 +1,7 @@
 <?php
     // Verifica se o usuário tem permissão para modificar dados
-    // VISIT (visitante): apenas leitura
-    // Outros roles: podem criar, alterar e excluir
+    // Apenas ADMIN pode criar, alterar e excluir
+    // Outros roles (VISIT, DOADOR, TECNICO, ONG): apenas leitura
 
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -23,11 +23,11 @@
     $usuario = $_SESSION['usuario'][0];
     $role = strtoupper(trim($usuario['role']));
 
-    // VISIT (visitante) não pode modificar dados
-    if($role === 'VISIT') {
+    // Apenas ADMIN pode modificar dados
+    if($role !== 'ADMIN') {
         $retorno = [
             'status' => 'not ok',
-            'mensagem' => 'Você não tem permissão para realizar esta ação. Visitantes podem apenas visualizar dados.',
+            'mensagem' => 'Você não tem permissão para realizar esta ação. Apenas administradores podem criar, alterar ou excluir dados.',
             'data' => []
         ];
         header("Content-type:application/json;charset=utf-8");
@@ -35,6 +35,5 @@
         exit;
     }
 
-    // Roles permitidas: ADMIN, DOADOR, TECNICO, ONG
-    // Se chegou aqui, tem permissão para continuar
+    // Se chegou aqui, é ADMIN e tem permissão para continuar
 ?>
