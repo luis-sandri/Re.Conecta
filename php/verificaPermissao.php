@@ -3,7 +3,9 @@
     // VISIT (visitante): apenas leitura
     // Outros roles: podem criar, alterar e excluir
 
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if(!isset($_SESSION['usuario'])) {
         // Usuário não está logado

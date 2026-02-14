@@ -10,22 +10,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function buscarDados(id){
-    const retorno = await fetch("../php/tecnicoGet.php?id="+id);
-    const resposta = await retorno.json();
-    if(resposta.status == "ok"){
-        var reg = resposta.data[0];
-        document.getElementById("tecnico-id").value = id;
-        document.getElementById("tecnico-CPF").value = reg.CPF;
-        if(reg.tipo_email === "pessoal") {
-            document.getElementById("tipo_pessoal").checked = true;
-        } else {
-            document.getElementById("tipo_institucional").checked = true;
-        }
-        document.getElementById("tecnico-data_nasc").value = reg.data_nasc;
-        document.getElementById("tecnico-genero").value = reg.genero;
+    try {
+        const retorno = await fetch("../php/tecnicoGet.php?id="+id);
+        const textoResposta = await retorno.text();
 
-    }else{
-        alert("ERRO! " + resposta.mensagem)
+        let resposta;
+        try {
+            resposta = JSON.parse(textoResposta);
+        } catch (e) {
+            console.error("Erro ao fazer parse de JSON:", e);
+            console.error("Resposta recebida:", textoResposta);
+            alert("ERRO! Servidor não retornou JSON válido. Veja o console (F12).");
+            return;
+        }
+
+        if(resposta.status == "ok"){
+            var reg = resposta.data[0];
+            document.getElementById("tecnico-id").value = id;
+            document.getElementById("tecnico-CPF").value = reg.CPF;
+            if(reg.tipo_email === "pessoal") {
+                document.getElementById("tipo_pessoal").checked = true;
+            } else {
+                document.getElementById("tipo_institucional").checked = true;
+            }
+            document.getElementById("tecnico-data_nasc").value = reg.data_nasc;
+            document.getElementById("tecnico-genero").value = reg.genero;
+        }else{
+            alert("ERRO! " + resposta.mensagem)
+        }
+    } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+        alert("ERRO! Não foi possível carregar os dados do técnico.");
     }
 }
 
@@ -59,19 +74,35 @@ async function alterar_tecnico(){
     tecnico_alterado.append("tipo_email", tipo_email);
     tecnico_alterado.append("data_nasc", data_nasc);
     tecnico_alterado.append("genero", genero);
-    tecnico_alterado.append("id", id);
 
-    const retorno = await fetch("../php/tecnicoAlterar.php?id="+id, {
-        method: "POST",
-        body: tecnico_alterado
-    });
-    const resposta = await retorno.json();
+    try {
+        const retorno = await fetch("../php/tecnicoAlterar.php?id="+id, {
+            method: "POST",
+            body: tecnico_alterado
+        });
 
-    if(resposta.status == "ok"){
-        alert("Sucesso! " + resposta.mensagem);
-        window.location.href = 'gerenciarTecnico.html';
-    }else{
-        alert("ERRO! " + resposta.mensagem);
-        console.error("Detalhes do erro:", resposta);
+        const textoResposta = await retorno.text();
+        console.log("Resposta do servidor:", textoResposta);
+
+        let resposta;
+        try {
+            resposta = JSON.parse(textoResposta);
+        } catch (e) {
+            console.error("Erro ao fazer parse de JSON:", e);
+            console.error("Resposta recebida:", textoResposta);
+            alert("ERRO! Servidor não retornou JSON válido. Veja o console (F12).");
+            return;
+        }
+
+        if(resposta.status == "ok"){
+            alert("Sucesso! " + resposta.mensagem);
+            window.location.href = 'gerenciarTecnico.html';
+        }else{
+            alert("ERRO! " + resposta.mensagem);
+            console.error("Detalhes do erro:", resposta);
+        }
+    } catch (error) {
+        console.error("Erro ao alterar técnico:", error);
+        alert("ERRO! Não foi possível processar a requisição.");
     }
 }
