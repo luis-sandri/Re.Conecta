@@ -3,6 +3,7 @@
     ini_set('display_errors', 1);
 
     include_once('conexao.php');
+    include_once('verificaPermissao.php');
 
     $retorno = [
         'status' => '',
