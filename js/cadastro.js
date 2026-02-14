@@ -90,4 +90,4 @@ async function cadastrarOng(){
     }else{
         alert("ERRO!" +resposta.mensagem);
     }       
-}    
+}
