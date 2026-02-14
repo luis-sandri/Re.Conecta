@@ -89,5 +89,18 @@ async function cadastrarOng(){
         window.location.href = '../login/login.html';        
     }else{
         alert("ERRO!" +resposta.mensagem);
-    }       
+    }
 }
+
+// Inicializar validadores quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // Validação de CPF/CNPJ para doador
+    adicionarValidacaoCPF('doador-cpf');
+    adicionarValidacaoCNPJ('doador-cnpj');
+
+    // Validação de CPF para técnico
+    adicionarValidacaoCPF('tecnico-cpf');
+
+    // Validação de CNPJ para ONG
+    adicionarValidacaoCNPJ('ong-cnpj');
+});

@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () =>  {
     validaSessao();
+
+    // Inicializar validador de CPF
+    adicionarValidacaoCPF('tecnico-CPF');
+
     const url = new URLSearchParams(window.location.search);
     const usuarioId = url.get("usuario_id");
     if(usuarioId){

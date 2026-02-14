@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", () =>  {
     validaSessao();
-    
+
+    // Inicializar validador de CNPJ
+    adicionarValidacaoCNPJ('ong-cnpj');
+
     // Capturar e popular o campo hidden com o usuario_id da URL
     const url = new URLSearchParams(window.location.search);
     const usuarioId = url.get("usuario_id");
-    
+
     if(usuarioId){
         document.getElementById("usuario_id").value = usuarioId;
         console.log("Usuario ID capturado:", usuarioId); // Debug
