@@ -9,6 +9,25 @@ Para testar o sistema com permissões de apenas leitura, utilize:
 - **Email:** visitante@reconecta.com
 - **Senha:** senha123
 
+<img width="1280" height="628" alt="image" src="https://github.com/user-attachments/assets/6483829a-7c5b-44d0-b328-8235da979583" />
+
+## Arquitetura de banco de dados e requisitos
+
+O projeto passou por etapas de **Discovery**, incluindo pesquisa com stakeholders e ideação, antes de chegar à implementação.
+
+### Modelagem de Dados
+A arquitetura do banco de dados foi desenhada para garantir a integridade das informações entre doadores, técnicos e ONGs.
+#### Modelo conceitual
+<img width="480" height="229" alt="image" src="https://github.com/user-attachments/assets/a4f2dcb5-01cf-464c-92cb-319170bd9057" />
+
+#### Modelo lógico
+<img width="480" height="480" alt="image" src="https://github.com/user-attachments/assets/399dee0a-d426-46a1-8b33-a7d0614466d5" />
+
+#### Diagrama de caso de uso
+<img width="466" height="480" alt="image" src="https://github.com/user-attachments/assets/5644cd95-3c39-4cf7-b17f-738a7317a911" />
+
+
+
 ---
 
 ## 📄 Sobre o Projeto
@@ -53,11 +72,3 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 * Modelagem focada em rastreabilidade e logística reversa.
 
 ---
-
-### Layout e Processo de Design
-
-O projeto passou por etapas de **Discovery**, incluindo pesquisa com stakeholders e ideação, antes de chegar à implementação.
-
-### Modelagem de Dados
-
-A arquitetura do banco de dados foi desenhada para garantir a integridade das informações entre doadores, técnicos e ONGs. (Imagem no Linkedin)
