@@ -12,7 +12,7 @@ Para testar o sistema com permissões de apenas leitura, utilize:
 <img width="1280" height="628" alt="image" src="https://github.com/user-attachments/assets/6483829a-7c5b-44d0-b328-8235da979583" />
 
 ## Arquitetura de banco de dados e requisitos
-
+OBS: As imagens podem ser baixadas para melhor visualização, estão nos arquivos do projeto, nessa parte inicial.
 O projeto passou por etapas de **Discovery**, incluindo pesquisa com stakeholders e ideação, antes de chegar à implementação.
 
 ### Modelagem de Dados
