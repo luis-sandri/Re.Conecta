@@ -14,7 +14,7 @@ Para testar o sistema com permissões de apenas leitura, utilize:
 ## Arquitetura de banco de dados e requisitos
 O projeto passou por etapas de **Discovery**, incluindo pesquisa com stakeholders e ideação, antes de chegar à implementação.
 
-OBS: As imagens podem ser baixadas para melhor visualização, estão nos arquivos do projeto, nessa parte inicial.
+### OBS: As imagens podem ser baixadas para melhor visualização, estão nos arquivos do projeto, nessa parte inicial.
 
 ### Modelagem de Dados
 A arquitetura do banco de dados foi desenhada para garantir a integridade das informações entre doadores, técnicos e ONGs.
